@@ -1,0 +1,84 @@
+
+body {
+  cursor: default;
+  letter-spacing: 0.25px;
+  min-width: 320px;
+}
+
+
+// all full-width sections get this class
+.hs-section {
+
+  // just for some visual separation
+  margin-top: 3rem;
+}
+
+
+.hs-inner {
+  width: 88%;
+  max-width: 1120px;
+  margin-right: auto;
+  margin-left: auto;
+  @include clearfix();
+}
+
+
+
+.button {
+  @include font-smoothing();
+  display: inline-block;
+  position: relative; 
+  z-index:9;
+  font-family: $sans-serif;
+  text-transform: uppercase;
+  background: $secondary;
+  font-weight: bold;
+  font-size: 0.85em;
+  padding: 1em 1.8em;
+  color: $white;
+  border-radius: 4px;
+  letter-spacing: 0.025em;
+  transition: background .3s ease;
+
+  &:after {
+    @include fill-parent(true); z-index: -1;
+    border-radius: 4px;
+    box-shadow: rgba(#000, 0.4) 0 0 16px;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+
+  &:before {
+    @include fill-parent(true); z-index: -4;
+    border-radius: 4px;
+    box-shadow: rgba($secondary, 0.3) 0 0 50px;
+    opacity: 0;
+    transform: scale(0.4);
+    transition: opacity .4s ease, transform .4s $ease-out-quart;
+  }
+
+  &:hover {
+    background-color: darken($secondary, 10%);
+    &:after {
+      opacity: 1;
+    }
+    &:before {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:active, .is-loading-quote & {
+    top: 1px;
+    background-color: darken($secondary, 10%);
+    
+    &:before {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    &:after {
+      box-shadow: none;
+    }
+  }
+
+}

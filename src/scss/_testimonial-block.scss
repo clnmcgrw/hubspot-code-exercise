@@ -1,0 +1,60 @@
+
+
+.hs-testimonial {
+  padding: 5rem 0 4rem;
+  background: darken($white, 3%);
+}
+
+.hs-testimonial--content {
+  position: relative;
+  width: 90%;
+  max-width: $bp-md;
+  margin: 0 auto;
+  padding-left: 2.8em;
+  padding-top: 0.5em;
+
+  &:before {
+    content:""; display:block;
+    position:absolute; z-index:99;
+    left: 0; top: -1.5em;
+    width: 2.5em; height: 2.5em;
+    background: $primary;
+    border-radius: 50%;
+    background-image: url(data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABHCAMAAADV01IKAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACfFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AAACjEeudAAAA0nRSTlMACjRYd5GktLydF0FigZeqt75eJ2mj2v3QBT58tekCP5PgDVqt8iCD4/Y6/GHRO70EZiOuTNgGffgdsS/SlGP5zqaKeThy+q8Q50II7BUw3stTH4lQ9OJVLtNs/gw57wlgf/Pxi3U9IQFdUtU8sPsxHHOMA8M3MxGpB9QtGSW4s81FqG0yNsTlbx7GSEC5JLafCxP1Jp6O5ivhSZucZPAUhccWft1qjd9ldrLXwRjIKCnJu2cq6poiUaXFgO4O9w9KRsDrwhKQQ9t6eNxx6IIbXHAPXQPUAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAABDtJREFUWMOdmflfzEEYx7+OZFPJWSvbVkpWYV0pSpK20kVuK3JHybHIRiJnyC33fR8hV67c923+IrtZ+c4+czzT59f9vF/vdua7zbOzmoZLm7bt2vt08O1oQPb18evkHxDYOahLV0y5W/cePYPJ34SoeYy9QnubPCgJlbXDzOERRBcVWWSfqGg9K5H1jelH6OBl5g4WL1Yo6x8VS0jrZMa4AQAVyQYOIoygZNbBESyWKxsylJDWyoYNZ7McWfyIBNJaWeJIDsqRjUpiliN8kwPiZK7R0Sw0ZUzq2LRxrH56CmzbMrr6IVYwM4NhyvIZn83pR0bBek5oLsKkaXn5kJ0w0crtF8AlTJkUiVJpk6cAduo0QX96FujPmI5TaTPtgDXMEvQLZ4N+6hykawRckiJRvxA+SmORKm0uQOd1EvXz5gNgAda1EKCWRaL+YrhfqcVI1xKwX/alon5kCXCVtEG6Sm2AnSTqFy8D/bLlSNcKE2BDjCJgJfw8rkK6HKsBal8jAtbChZhdjpQFwL9znajvrIBADNLVtgyy60VADOyXbcC5rIwzoosIqGScXxuRbywdoqRIBFQxgE1pm7MRrtz5DLZ6y9YwHmAm7FiqJhplsnAOawrcxga2E2527BS/vRobn921mwHsIaLkDxPJkoVs7V4A7CPi7D/AdR20iNFDg72Aw3aJjFTU8GRpMpQcoXe9TgqQo8fYruLjcjZIv+lWkxwgWXuZsvEIlATp3tsJDEB6ZrJkBhR78j9wCgUQX4bLkYNj/VuWHbOK7pyGMjMSndfXAyxHAuTMWSA7h2WrPMBKLEB8gOw8mvUMWhloIOGClyvbhmY9Z84ONEAueskK8ejf0/SCAnDJS3ZZgb2i8kA1ZystC1dAr7qBayqy67SsVoU9rDGHD35u0LKbKmyRCziiAuTTsmgVtk5jTx/cxFLHhVMFJctcxC0lol4vy1VCb7uIAUoEddBUKqEVLqJEibijl91Vlm1XIhL1snoltEHpX6M71FhnlM4u+rjPQ8QA8j9Z9KM/VYUNdwH+KsA9WiYbAancdwEPVACvL1EXVdhRikcMMbf+iDE1XwUk44GHDloWdhTPPmom1uABMBcswLOeS5EJ2L69m7esMRbL/rsUfYwFGF/Kn2DZlsu5p7h+SiWUNSbg2IaWm6K8MhTAvDyYi0JjdfNEKAYYE8+SGVE7/kz/CAfJ+88bNWYWI8b9WurLfFOIrP+il8ZJqUXGJr2kidwkieuVxs1ria2i3psofyPq55RqgvR/K2LfvWfsdB3/dGoo0IQpuM13fWBfpHz8xK5bPls1SaxfOEv5dTMPif/2HdZthhqZyp1EA+PDakp3ChBn0Ztgqp7/IxGjcudnwCUKDb4VJ7368vsVuMvk3r7opOpv2J8PPFn/u3qGe0q2m54G/sL8dNMcR1OmE9sFq1Pe5OC89AcmH85wS24yLQAAAABJRU5ErkJggg==);
+    background-size: 45% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: $white 0 0 0 4px;
+  }
+
+  &:after {
+    content:""; display:block; z-index:89;
+    position: absolute; width:2px;
+    top: -0.5em; left: 1.25em; height: 100%;
+    margin-left: -1px;
+    background: $primary;
+  }
+
+  p {
+    position: relative;
+    font-size: 1.1em;
+    margin: 0 0 1em;
+  }
+
+  span {
+    position: relative;
+    display: block;
+    font-weight: 400;
+    font-size: 0.95em;
+    font-family: $sans-serif;
+
+    &:before {
+      content:""; display:block; position:absolute;
+      left: -1.6em; bottom: .25em;
+      margin-left: -5px;
+      width: 10px; height: 10px;
+      background: $primary;
+      border-radius: 50%;
+    }
+  }
+}

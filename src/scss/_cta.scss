@@ -1,0 +1,70 @@
+
+.hs-cta {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+  background-color: $dark;
+}
+
+.hs-cta--content {
+  p {
+    color: $white;
+    margin: 0 0 2em;
+    will-change: opacity;
+    transition: opacity .35s ease;
+  }
+  .button {
+    display: block;
+    min-width: 170px;
+    text-align: center;
+
+    .is-loading-quote & {
+      cursor: wait;
+      top: 1px;
+    }
+  }
+
+  .is-loading-quote & {
+    p {
+      opacity: 0.25;
+    }
+  }
+}
+
+
+
+
+
+.hs-cta--loadprogress {
+  position: absolute;
+  top: 0; left: 0;
+  height: 4px; width: 100%;
+  background-color: $secondary;
+  opacity: 0;
+  transform: scale(0, 1);
+  transform-origin: left center;
+  transition: transform 0.3s $ease-out-quart, opacity .4s ease;
+
+  .is-loading-quote & {
+    opacity: 1;
+  }
+}
+
+
+
+
+@media (min-width: $bp-sm) {
+
+  .hs-cta--content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      margin: 0;
+      margin-right: auto;
+      padding-right: 5%;
+    }
+  }
+
+}
