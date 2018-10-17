@@ -21,6 +21,16 @@ export const mediaAlphabetize = (prev, next) => {
   return a.localeCompare(b);
 };
 
+// capitalize array items
+export const capitalizedArrayItems = (items, result='') => {
+  items.forEach((item, i) => {
+    const firstLetter = item.charAt(0);
+    result += item.replace(firstLetter, firstLetter.toUpperCase());
+    if ((i + 1) < items.length) result += ', ';
+  });
+  return result;
+};
+
 
 // get arrays of all available genres & years
 export const getFilters = {

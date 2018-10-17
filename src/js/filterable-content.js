@@ -1,7 +1,7 @@
 
 import $ from 'jquery';
 import Isotope from 'isotope-layout';
-import { mediaAlphabetize, getFilters, getData } from './lib/utils.js';
+import { mediaAlphabetize, getFilters, capitalizedArrayItems, getData } from './lib/utils.js';
 
 
 // will hold selected filters
@@ -27,14 +27,6 @@ const getChecklistDropdown = (list, name) => {
   });
   html += `</ul>`;
   return html;
-};
-const capitalizedArrayItems = (items, result='') => {
-  items.forEach((item, i) => {
-    const firstLetter = item.charAt(0);
-    result += item.replace(firstLetter, firstLetter.toUpperCase());
-    if ((i + 1) < items.length) result += ', ';
-  });
-  return result;
 };
 const getMediaItem = (info) => {
   return `<li class="hs-mediaitem" data-genre="${info.genre.join(', ')}" data-year="${info.year}" data-mediatype="${info.type}">
@@ -89,7 +81,7 @@ const runSearchCallback = term => {
     const $this = $(item);
     let matchAgainst = $this.find('h3').text().toLowerCase();
     for (let prop in activeFilters) {
-      matchAgainst += $this.data('prop');
+      matchAgainst += ' '+$this.data(prop);
     }
     return matchAgainst.includes(searchTerm);
   };
@@ -224,12 +216,12 @@ const onMediaGridReady = ($grid) => {
       $grid.addClass('is-empty');
     }
   });
-  
+  //images havent taken height in DOM, rerun layout
   setTimeout(() => {
     iso.layout();
     $grid.addClass('is-ready');
     filterReady = true;
-  }, 200);
+  }, 300);
 };
 
 

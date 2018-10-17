@@ -751,6 +751,23 @@ body {
 .hs-mediagrid--msg-content a {
   font-family: "Montserrat", sans-serif; }
 
+.hs-filterable--list.hs-reactlist ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .hs-filterable--list.hs-reactlist ul:before, .hs-filterable--list.hs-reactlist ul:after {
+    display: none; }
+
+.hs-filterable--list.hs-reactlist .hs-mediaitem {
+  float: none;
+  width: 50%;
+  margin: 0; }
+
 @media (min-width: 580px) {
   .hs-select {
     width: auto;
@@ -785,6 +802,8 @@ body {
   .hs-filterable--radio label {
     padding-left: 24px; }
   .hs-filterable--radio:first-of-type {
-    margin-right: 1.5em; } }
+    margin-right: 1.5em; }
+  .hs-filterable--list.hs-reactlist .hs-mediaitem {
+    width: 33.3333%; } }
 
 /*# sourceMappingURL=app.css.map */

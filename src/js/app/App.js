@@ -1,11 +1,10 @@
-import React from 'react';
 
+import React from 'react';
 import FilterControls from './FilterControls.js';
 import MediaGrid from './MediaGrid.js';
 
-import { mediaAlphabetize } from '../lib/utils.js';
-
-const mediaData = require('../data/data.json').media;
+import classnames from 'classnames';
+import { mediaAlphabetize, getFilters, getData } from '../lib/utils.js';
 
 
 class App extends React.Component {
@@ -15,6 +14,7 @@ class App extends React.Component {
     this.state = {
       loading: true,
       media: [],
+      showIndexes: [],
       filters: {
         genre: [],
         year: [],
@@ -27,21 +27,16 @@ class App extends React.Component {
         mediatype: []
       }
     };
-    this.getMediaData().then(media => {
+    getData().then(media => {
       this.setState({ media, loading: false });
     });
   }
 
-  getMediaData() {
-    return new Promise((resolve, reject) => {
-      window.setTimeout(() => {
-        const clone = [...mediaData];
-        console.log('original: ', clone);
-        clone.sort(mediaAlphabetize);
-        console.log('sorted: ', clone);
-        resolve(clone);
-      }, 1000);
-    });
+  
+  setInitialActiveIndexes(media) {
+    const showIndexes = [];
+    media.forEach((item, index) => showIndexes.push(index));
+    this.setState({ showIndexes });
   }
 
   onFilterChanged(e, filtername) {
@@ -60,11 +55,16 @@ class App extends React.Component {
       mediatype: e => this.onFilterChanged(e, 'mediatype'),
       searchterm: e => this.onFilterChanged(e, 'searchterm')
     };
+    const outerClasses = classnames({
+      'hs-section': true, 
+      'hs-filterable': true,
+      'hs-loading': this.state.loading
+    });
 
     return(
-      <div className="hs-section hs-filterable">
+      <div className={outerClasses}>
         <FilterControls media={this.state.media} handlers={filterHandlers} />
-        <MediaGrid media={this.state.media} />
+        <MediaGrid media={this.state.media} loading={this.state.loading} filtered={this.state.showIndexes} />
       </div>
     );
   }

@@ -320,6 +320,27 @@
 
 
 
+.hs-filterable--list.hs-reactlist {
+  
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &:before, &:after {
+      display: none;
+    }
+  }
+  
+  .hs-mediaitem {
+    float: none;
+    width: 50%;
+    margin: 0;
+  }
+}
+
+
+
 @media (min-width: $bp-sm) {
 
   .hs-select {
@@ -365,8 +386,6 @@
     float: right;
     max-width: 440px;
   }
-
-
 }
 
 
@@ -387,6 +406,11 @@
     }
   }
   
+  .hs-filterable--list.hs-reactlist {
+    .hs-mediaitem {
+      width: 33.3333%;
+    }
+  }
 }
 
 
