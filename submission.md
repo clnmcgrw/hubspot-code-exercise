@@ -5,20 +5,25 @@ These notes will be read by HubSpot developers. Drop us a line!
 
 ## Given more time, what would you have done differently?
 
-- make years a 2-handled range slider 
+A few things I could have done to improve UX:
 
-- fuzzy-mathcing search (with a library)
+* make the "years" dropdown a 2-handled range slider, or at least break year filters up into ranges (1890 - 1920, etc..)
+* fuzzy-mathcing for string search (with a library), like [FuseJS](http://fusejs.io/)
+* the bundle is massive (1.5MB+) and there are ways to cut it down (treeshake, lazyload, drop libraries, etc...)
 
-- better React build - error overlays, etc..
+Some things that could improve workflow & dev experience:
 
-- Could have authored cta.js in a way that works for multiple cta's on a page.  When working on a project I'd make sure to ask questions and get the full requirenments before I build anything. 
+* better React build - create-react-app, error overlays, etc..
+* js sourcemaps
+* linting JS & Scss
+* drop gulp dependency, or at least use gulp file watchers to rebuild webpack bundle
 
-- set up linting for Sass & JS
+And things that would improve code portability:
 
-- don't really need Babel polyfill, def shouldn't need half mb of script
+* all code challenge modules could and probably should be written to allow multiple instances
 
 
 
 ## Is there anything else you'd like to let us know?
 
-- This is impressive - https://www.hubspot.com/style-guide
+The Hubspot canvas design system & (web style guide)[https://www.hubspot.com/style-guide/get-started] are awesome! I was excited to see those, can't believe I didn't come across them earlier.  I've been really impressed overall with the brand refresh that's happened over the last year or so and the work the web team has done - love how consistent marketing pages are with the product UI.  Super-excited to have the chance to work with such a talented team on things like these.  Thanks for giving me a shot! 😁

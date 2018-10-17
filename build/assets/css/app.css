@@ -604,6 +604,7 @@ body {
     outline: none;
     width: 100%;
     padding: 8px 10px;
+    color: #0F434C;
     border: 1px solid #e6e6e6;
     -webkit-transition: border .3s ease;
     -o-transition: border .3s ease;
