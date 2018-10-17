@@ -1,7 +1,8 @@
 
 import $ from 'jquery';
 import Isotope from 'isotope-layout';
-const mediaData = require('./data/data.json');
+import { mediaAlphabetize, getFilters, getData } from './lib/utils.js';
+
 
 // will hold selected filters
 const activeFilters = {
@@ -11,16 +12,7 @@ const activeFilters = {
 };
 let filterReady = false;
 let iso = null;
-
-
-// mock an async function, because that would likely be the real-world scenario
-const getData = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(mediaData.media);
-    }, 1500);
-  });
-};  
+ 
 
 
 // template helper functions
@@ -68,30 +60,6 @@ const getMediaGrid = (media, html=``) => {
   html += getMessageHtml();
   return html;
 };
-const getLoadingHtml = () => {
-  return  `<div>
-            <div>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>`;
-};
-
-
-
-// get arrays of all available genres & years
-const getFilters = {
-  genre(media) {
-    const genres = media.map(item => item.genre);
-    const flattened = genres.reduce((acc, val) => acc.concat(val), []);
-    return [...new Set(flattened)];
-  },
-  year(media) {
-    const years = media.map(item => item.year);
-    return [...new Set(years)];
-  }
-};
 
 
 // will run every time a filter input changes
@@ -128,28 +96,19 @@ const runSearchCallback = term => {
   iso.arrange({ filter, sortBy: 'mediaTitle' });
 };
 
+
 //clears all filters
 const clearActiveFilters = (e, $input) => {
   e.preventDefault();
   $('input[type="radio"]:checked, input[type="checkbox"]:checked').prop('checked', false);
   $input.val('');
   //let user see checkboxes uncheck before dropdown closes
-  setTimeout(() => $(document).trigger('click'), 300);
+  setTimeout(() => $(document).trigger('click'), 150);
   //resets stored values
   for (let prop in activeFilters) activeFilters[prop] = [];
   //show all grid items
   iso.arrange({filter: '*'});
   e.stopPropagation();
-};
-
-
-// alphabetize sort
-// ignores first words "The" & "A"
-const mediaAlphabetize = (prev, next) => {
-  const ignoredWords = /The|A/;
-  const a = prev.title.replace(ignoredWords, '').toLowerCase().trim();
-  const b = next.title.replace(ignoredWords, '').toLowerCase().trim();
-  return a.localeCompare(b);
 };
 
 
@@ -265,18 +224,20 @@ const onMediaGridReady = ($grid) => {
       $grid.addClass('is-empty');
     }
   });
-
-  $grid.addClass('is-ready');
-  filterReady = true;
-  setTimeout(() => iso.layout(), 200);
+  
+  setTimeout(() => {
+    iso.layout();
+    $grid.addClass('is-ready');
+    filterReady = true;
+  }, 200);
 };
 
 
-const dataFail = ($el, err) => {
+// never gonna happen
+const initFail = ($el, err) => {};
 
-};
 
-
+// blastoff
 const initialize = data => {
   const $selects = $('.hs-select');
   const $searchInput = $('#search-input');
@@ -312,4 +273,4 @@ const initialize = data => {
 };
 
 
-export default () => getData().then(initialize).catch(dataFail);
+export default () => getData().then(initialize).catch(initFail);

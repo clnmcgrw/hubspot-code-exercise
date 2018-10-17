@@ -5,7 +5,8 @@
   "main": "./build/index.js",
   "scripts": {
     "start": "gulp",
-    "build": "gulp --production"
+    "build": "gulp --production",
+    "deploy": "surge build orange-sprocket.surge.sh"
   },
   "author": "Colin McGraw",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "babel-loader": "^8.0.4",
     "browser-sync": "^2.26.0",
     "chalk": "^2.4.1",
+    "classnames": "^2.2.6",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^6.0.0",

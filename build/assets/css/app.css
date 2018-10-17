@@ -744,6 +744,8 @@ body {
 .hs-mediagrid--msg-content {
   width: 100%;
   text-align: center; }
+  .hs-mediagrid--msg-content p {
+    font-family: "Montserrat", sans-serif; }
 
 .hs-mediagrid--msg-content a {
   font-family: "Montserrat", sans-serif; }

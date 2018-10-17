@@ -9,6 +9,8 @@ These notes will be read by HubSpot developers. Drop us a line!
 
 - fuzzy-mathcing search (with a library)
 
+- better React build - error overlays, etc..
+
 - Could have authored cta.js in a way that works for multiple cta's on a page.  When working on a project I'd make sure to ask questions and get the full requirenments before I build anything. 
 
 - set up linting for Sass & JS

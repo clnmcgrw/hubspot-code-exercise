@@ -6,7 +6,7 @@
 // But I wanted to show an example of how I would handle parts of a codebase that need to be highly portable. 
 
 const defaults = {
-  url: 'http://api.icndb.com/jokes/random?limitTo=[nerdy]',
+  url: 'http://api.icndb.com/jokes/random?exclude=[explicit]', // keep it clean
   method: 'GET'
 };
 

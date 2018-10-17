@@ -76,7 +76,7 @@ const btnClickHandler = event => {
     req.onEvent('progress', val => onAjaxProgress(val));
     req.onEvent('success', data => onAjaxSuccess(data));
     req.onEvent('error', err => onAjaxError(err));
-  }, 500);
+  }, 150);
 };
 
 

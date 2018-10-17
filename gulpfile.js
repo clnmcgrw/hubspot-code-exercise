@@ -28,7 +28,7 @@ const PATHS = {
     filename: 'app.bundle.js'
   },
   html: {
-    src: 'src/views/pages/index.ejs',
+    src: 'src/views/pages/*.ejs',
     output: 'build',
     watch: 'src/views/**/*.ejs',
     reload: 'build/*.html'

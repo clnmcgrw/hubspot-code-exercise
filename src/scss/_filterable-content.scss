@@ -309,6 +309,9 @@
 .hs-mediagrid--msg-content {
   width: 100%;
   text-align: center;
+  p {
+    font-family: $sans-serif;
+  }
 }
 .hs-mediagrid--msg-content a {
   font-family: $sans-serif;

@@ -11,7 +11,10 @@ module.exports = (options, paths) => {
         comments: false
       }
     });
-    plugins.push(uglify);
+    const defPlug = new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    });
+    plugins.push(uglify, defPlug);
   }
 
   return {
