@@ -1,20 +1,13 @@
+const webpack = require('webpack');
 
 module.exports = (options, paths) => {
   
   const plugins = [];
   if (options.production) {
-    const uglify = new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }, 
-      output: {
-        comments: false
-      }
-    });
     const defPlug = new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     });
-    plugins.push(uglify, defPlug);
+    plugins.push(defPlug);
   }
 
   return {

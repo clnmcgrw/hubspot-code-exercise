@@ -34,9 +34,9 @@ class FilterControls extends React.Component {
 
 
   render() {
-    const handlers = {
-      genre: this.props.handlers.genre.bind(this)
-    };
+    const _onGenreChange = this.props.handlers.genre.bind(this);
+    const _onSearchTermChange = this.props.handlers.searchterm.bind(this);
+    
     const dropdownClickHandler = this.openDropdown.bind(this);
 
     return(
@@ -56,7 +56,7 @@ class FilterControls extends React.Component {
               </div>
             </div>
             <div className="hs-filterable--search">
-              <input id="search-input" type="text" />
+              <input id="search-input" type="text" onChange={e => _onSearchTermChange(e, 'searchterm')} />
             </div>
           </div>
 

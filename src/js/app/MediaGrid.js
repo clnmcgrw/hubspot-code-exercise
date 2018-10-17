@@ -11,9 +11,11 @@ class MediaGrid extends React.Component {
 
   
   render() {
+
     const renderItem = (item, index) => {
+      const itemStyle = { display: this.props.filtered.indexOf(index) !== -1 ? 'block' : 'none' };
       return(
-        <li className="hs-mediaitem" key={'mediaitem-'+index}>
+        <li className="hs-mediaitem" style={itemStyle} key={'mediaitem-'+index}>
           <figure className="hs-mediaitem--img">
               <img src={item.poster} alt={item.title} className="is-loaded" />
             </figure>

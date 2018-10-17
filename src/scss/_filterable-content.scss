@@ -112,7 +112,8 @@
     transition: background .3s ease, color .3s ease;
 
     &:hover {
-      background: darken($white, 5%);
+      color: $dark;
+      //background: darken($white, 5%);
     }
   }
 
@@ -120,11 +121,10 @@
     position: absolute;
     pointer-events: none;
     left: 10px;
-    top: 11px;
+    top: 12px;
 
 
     &:checked + label {
-      background-color: darken($white, 5%);
       color: $secondary;
     }
   }
@@ -157,12 +157,15 @@
   }
 
   input[type="text"], input[type="search"] {
+    appearance: none;
     outline: none;
     width: 100%;
     padding: 8px 10px;
     color: $dark;
+    border-radius: 0px;
+    box-shadow: none;
     border: 1px solid darken($white, 10%);
-    transition: border .3s ease;
+    transition: border .3s ease, box-shadow .3s ease;
 
     &:focus {
       border-color: $secondary;
@@ -231,7 +234,7 @@
   ul {
     list-style: none;
     margin:0; padding:0;
-    min-height: 500px;
+    min-height: 220px;
     overflow: hidden;
     @include clearfix();
     transition: height .5s ease;
@@ -385,6 +388,10 @@
   .hs-filterable--search {
     float: right;
     max-width: 440px;
+  }
+
+  .hs-filterable--list ul {
+    min-height: 500px;
   }
 }
 

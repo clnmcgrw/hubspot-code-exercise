@@ -9,7 +9,10 @@ A few things I could have done to improve UX:
 
 * make the "years" dropdown a 2-handled range slider, or at least break year filters up into ranges (1890 - 1920, etc..)
 * fuzzy-mathcing for string search (with a library), like [FuseJS](http://fusejs.io/)
-* the bundle is massive (1.5MB+) and there are ways to cut it down (treeshake, lazyload, drop libraries, etc...)
+* adding some kind of loading indicator to the filterable content module
+* the bundle is massive (1.5MB+) and there are ways to cut it down (treeshake, code-splitting, drop libraries, etc...)
+* could have done more with CSS, created more apparent pressed & active states, fancier transitions, etc.
+* load webfonts differently to prevent FOUT
 
 Some things that could improve workflow & dev experience:
 
@@ -22,6 +25,9 @@ And things that would improve code portability:
 
 * all code challenge modules could and probably should be written to allow multiple instances
 
+React:
+
+* I wanted to do a React version of the filterable content also. Its in progress, and I want to finish it off anyway and use it as a chance to play with [PopmotionPose](https://popmotion.io/pose/)
 
 
 ## Is there anything else you'd like to let us know?

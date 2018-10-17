@@ -29,6 +29,7 @@ class App extends React.Component {
     };
     getData().then(media => {
       this.setState({ media, loading: false });
+      this.setInitialActiveIndexes(media);
     });
   }
 
@@ -39,12 +40,30 @@ class App extends React.Component {
     this.setState({ showIndexes });
   }
 
+  //update showIndexes based on current filter settings
+  setActiveIndexes() {
+
+    this.state.media.forEach(item => {
+      for (let prop in this.state.filters) {
+        
+      }
+    });
+  }
+
   onFilterChanged(e, filtername) {
-    console.log(e);
     e.preventDefault();
-    const updated = {};
-    updated[filtername] = e.target.value;
-    this.setState(Object.assign({}, filters, updated));
+    // const updated = {};
+    // updated[filtername] = e.target.value;
+    // this.setState({
+    //   filters: Object.assign({}, this.state.filters, updated)
+    // });
+  }
+
+  onSearchInput(e) {
+    const updated = {}
+    // this.setState({
+    //   filters: Object.assign({}, this.state.filters, updated);
+    // });
   }
 
 
@@ -53,7 +72,7 @@ class App extends React.Component {
       genre: e => this.onFilterChanged(e, 'genre'),
       year: e => this.onFilterChanged(e, 'year'),
       mediatype: e => this.onFilterChanged(e, 'mediatype'),
-      searchterm: e => this.onFilterChanged(e, 'searchterm')
+      searchterm: e => this.onSearchInput(e)
     };
     const outerClasses = classnames({
       'hs-section': true, 
@@ -64,7 +83,8 @@ class App extends React.Component {
     return(
       <div className={outerClasses}>
         <FilterControls media={this.state.media} handlers={filterHandlers} />
-        <MediaGrid media={this.state.media} loading={this.state.loading} filtered={this.state.showIndexes} />
+        <MediaGrid media={this.state.media} loading={this.state.loading} 
+                   filtered={this.state.showIndexes} activeFilters={this.state.filters} />
       </div>
     );
   }

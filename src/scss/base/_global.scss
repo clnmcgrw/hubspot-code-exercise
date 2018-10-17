@@ -5,12 +5,25 @@ body {
   min-width: 320px;
 }
 
+.react-version-link {
+  text-align: center;
+  padding-bottom: 3em;
+  font-size: 0.9em;
+
+  a {
+    font-family: $sans-serif;
+  }
+}
 
 // all full-width sections get this class
 .hs-section {
 
   // just for some visual separation
   margin-top: 3rem;
+
+  #react-root & {
+    margin-top: 0;
+  }
 }
 
 
