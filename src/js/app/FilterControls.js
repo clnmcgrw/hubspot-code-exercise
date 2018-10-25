@@ -2,75 +2,89 @@ import React from 'react';
 import classnames from 'classnames';
 import posed from 'react-pose';
 
+import { getFilters } from '../lib/utils.js';
+
+
+const DropDown = posed.div({
+  closed: { opacity:0, height:0 },
+  open: { opacity:1, height:'auto' }
+});
+
 
 class FilterControls extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      dropdownOpen: [false, false]
-    };
-  }
-
-
-  getFilterData(type='genre') {
-    return {
-      genre(media) {
-        const genres = media.map(item => item.genre);
-        const flattened = genres.reduce((acc, val) => acc.concat(val), []);
-        return [...new Set(flattened)];
-      },
-      year(media) {
-        const years = media.map(item => item.year);
-        return [...new Set(years)];
-      }
+      dropdownOpen: false
     };
   }
 
 
   openDropdown(e, index) {
+    this.setState({ 
+      dropdownOpen: this.state.dropdownOpen === index ? false : index
+    });
+    e.stopPropagation();
+  }
 
+  stopClickPropagation(e) {
+   e.stopPropagation();
+  }
+
+
+
+  componentDidMount() {
+    document.body.addEventListener('click', e => {
+      console.log('Body Element Click...');
+      this.setState({ dropdownOpen: false });
+    });
   }
 
 
   render() {
     const _onGenreChange = this.props.handlers.genre.bind(this);
     const _onSearchTermChange = this.props.handlers.searchterm.bind(this);
-    
+    const _clearFilters = this.props.onclear.bind(this);
     const dropdownClickHandler = this.openDropdown.bind(this);
+    const onRadioChange = this.radioChange.bind(this);
 
     return(
       <div className="hs-inner">
         <div className="hs-filterable--header">
             
           <div className="hs-filterable--row">
-            <div className="hs-select">
-              <span onClick={e => dropdownClickHandler(e, 0)}>Genre</span>
-              <div className="hs-select--dropdown">
-              
-              </div>
-            </div>
-            <div className="hs-select">
-              <span onClick={e => dropdownClickHandler(e, 1)}>Year</span>
-              <div className="hs-select--dropdown">
-              </div>
-            </div>
+            
+            {this.props.dropdowns.map((drop, i) => 
+            <div className="hs-select" key={'dropdown-'+i}>
+              <span onClick={e => dropdownClickHandler(e, i)}>{drop.name}</span>
+              <DropDown className="hs-select--dropdown-pose" pose={this.state.dropdownOpen === i ? 'open' : 'closed'}>
+                <ul>
+                {drop.items.map((item, index) =>
+                  <li key={'dropdown-'+item+'-'+index}>
+                    <input type="checkbox" name={drop.name} id={'dropdown-'+item+'-'+index} />
+                    <label htmlFor={'dropdown-'+item+'-'+index}>{item}</label>
+                  </li>)}
+                </ul>
+              </DropDown>
+            </div>)}
+            
             <div className="hs-filterable--search">
-              <input id="search-input" type="text" onChange={e => _onSearchTermChange(e, 'searchterm')} />
+              <input id="search-input" type="text" placeholder="Search By Title" 
+                     onChange={e => _onSearchTermChange(e)} />
             </div>
           </div>
 
           <div className="hs-filterable--row">
-            <div className="hs-filterable--radio">
-              <input type="radio" name="mediatype" value="movie" id="movies-radio" />
-              <label htmlFor="movies-radio">Movies</label>
-            </div>
-            <div className="hs-filterable--radio">
-              <input type="radio" name="mediatype" value="book" id="books-radio" />
-              <label htmlFor="books-radio">Books</label>
-            </div>
+            {this.props.radios.map((radio, i) => 
+            <div className="hs-filterable--radio" key={'mediatype-radio-'+i}>
+              <input type="radio" name="mediatype" value={radio.toLowerCase()} id={radio.toLowerCase()+'-radio'}
+                     onChange={} />
+              <label htmlFor={radio.toLowerCase()+'-radio'}>{radio}</label>
+            </div>)}
+
             <div className="hs-filterable--clear">
-              <a id="filters-clear" href="#">Clear filters</a>
+              <a id="filters-clear" href="#" onClick={e => _clearFilters(e)}>Clear filters</a>
             </div>
           </div>
 

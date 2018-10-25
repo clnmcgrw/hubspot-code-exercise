@@ -5,7 +5,7 @@ module.exports = (options, paths) => {
   const plugins = [];
   if (options.production) {
     const defPlug = new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': 'production'
     });
     plugins.push(defPlug);
   }
